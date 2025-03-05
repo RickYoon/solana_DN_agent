@@ -1,48 +1,87 @@
-import "./globals.css";
-import { Public_Sans } from "next/font/google";
-import ClientWalletProvider from "./providers/WalletProvider";
+'use client';
 
-const publicSans = Public_Sans({ subsets: ["latin"] });
+import './globals.css'
+import { Inter } from 'next/font/google'
+import RightPanel from './components/layout/RightPanel'
+import { WalletContextProvider } from './contexts/WalletContextProvider'
+import CenterPanel from './components/layout/CenterPanel'
+import LeftPanel from './components/layout/LeftPanel'
+import { useState } from 'react'
+
+const inter = Inter({ 
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-inter',
+})
 
 export default function RootLayout({
 	children,
 }: {
-	children: React.ReactNode;
+	children: React.ReactNode
 }) {
+	const [selectedServiceUrl, setSelectedServiceUrl] = useState<string | undefined>(undefined);
+	const [isAIChatVisible, setIsAIChatVisible] = useState(false);
+
+	const handleServiceSelect = (url: string | undefined) => {
+		setSelectedServiceUrl(url);
+	};
+
+	const toggleAIChat = () => {
+		setIsAIChatVisible(!isAIChatVisible);
+	};
+
 	return (
-		<html lang="en">
+		<html lang="ko">
 			<head>
-				<title>SolanaAgentKit + LangChain + Next.js Template</title>
+				<title>Solana DeFi Agent</title>
 				<link rel="shortcut icon" href="/images/favicon.ico" />
 				<meta
 					name="description"
-					content="Starter template showing how to use SolanaAgentKit with Langchain in Next.js projects."
+					content="Your personal DeFi assistant powered by AI"
 				/>
 				<meta
 					property="og:title"
-					content="SolanaAgentKit + LangChain + Next.js Template"
+					content="Solana DeFi Agent"
 				/>
 				<meta
 					property="og:description"
-					content="Starter template showing how to use SolanaAgentKit with LangChain in Next.js projects."
+					content="Your personal DeFi assistant powered by AI"
 				/>
 				<meta property="og:image" content="/images/title-card.png" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta
 					name="twitter:title"
-					content="SolanaAgentKit + LangChain + Next.js Template"
+					content="Solana DeFi Agent"
 				/>
 				<meta
 					name="twitter:description"
-					content="Starter template showing how to use SolanaAgentKit with LangChain in Next.js projects."
+					content="Your personal DeFi assistant powered by AI"
 				/>
 				<meta name="twitter:image" content="/images/title-card.png" />
 			</head>
-			<body className={publicSans.className}>
-				<ClientWalletProvider>
-					<div className="flex flex-col p-4 md:p-12 h-[100vh]">{children}</div>
-				</ClientWalletProvider>
+			<body className={`${inter.className} bg-gray-950`}>
+				<WalletContextProvider>
+					<main className="flex min-h-screen h-screen">
+						<LeftPanel onServiceSelect={handleServiceSelect} onToggleAIChat={toggleAIChat} />
+						<div className="flex-1 relative">
+							<CenterPanel serviceUrl={selectedServiceUrl} />
+							<div 
+								className={`fixed top-0 right-0 h-full w-[400px] bg-gray-900 border-l border-gray-800 transform transition-all duration-300 ease-in-out ${
+									isAIChatVisible ? 'translate-x-0' : 'translate-x-full'
+								} ${
+									isAIChatVisible ? 'opacity-100' : 'opacity-0'
+								}`}
+								style={{
+									visibility: isAIChatVisible ? 'visible' : 'hidden',
+									transitionProperty: 'transform, opacity, visibility'
+								}}
+							>
+								<RightPanel onServiceSelect={handleServiceSelect} />
+							</div>
+						</div>
+					</main>
+				</WalletContextProvider>
 			</body>
 		</html>
-	);
+	)
 }
