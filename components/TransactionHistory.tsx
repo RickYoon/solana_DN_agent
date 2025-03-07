@@ -102,7 +102,7 @@ export function TransactionHistory() {
             timestamp: item.blockTime || 0,
             type,
             status: tx.meta?.err ? 'error' : 'success',
-            rawLogs: tx.meta?.logMessages,
+            rawLogs: tx.meta?.logMessages || [],
             rawInstructions: tx.transaction.message.instructions
           };
 
