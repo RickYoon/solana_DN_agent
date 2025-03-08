@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2024 Linkrypto. All rights reserved.
+ * This file is part of Linkrypto's proprietary software.
+ * Unauthorized use, copying, modification, or distribution is prohibited.
+ */
+
 'use client';
 
 import React from 'react';
