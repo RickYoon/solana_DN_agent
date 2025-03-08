@@ -54,3 +54,11 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Thank You!
 
 Thanks for reading! If you have any questions or comments, please drop an issue on this repo or reach out to us on [X](https://x.com/sendaifun)
+
+## License and Copyright
+
+Copyright © 2024 Linkrypto. All rights reserved.
+
+This project is proprietary software and all rights are reserved by Linkrypto.
+Commercial use and redistribution are prohibited. Unauthorized use may result in legal action.
+Please refer to the LICENSE file for detailed terms and conditions.
