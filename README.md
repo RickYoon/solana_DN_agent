@@ -1,8 +1,8 @@
-# 🤖 LINKRYPTO - AI-powered DeFi Navigator
+# 🤖 FISTACK - AI-powered DeFi Navigator
 
 ## 💡 Project Overview
 
-LINKRYPTO is a Solana-based AI-powered DeFi Navigator that simplifies multi-protocol investment through conversational guidance and real-time yield tracking.
+FISTACK is a Solana-based AI-powered DeFi Navigator that simplifies multi-protocol investment through conversational guidance and real-time yield tracking.
 
 ### 🌟 Key Features
 
@@ -61,7 +61,7 @@ pnpm dev
 
 ## 📄 License
 
-Copyright © 2024 Linkrypto. All rights reserved.
+Copyright © 2024 FISTACK. All rights reserved.
 
-This project is proprietary software and all rights are reserved by Linkrypto.
+This project is proprietary software and all rights are reserved by FISTACK.
 Commercial use and redistribution are prohibited.
